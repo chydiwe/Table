@@ -28,7 +28,6 @@ class Table extends Component {
         }
         else {
             sortArr.reverse()
-            newSortState = ['arrowDown', 'arrowDown', 'arrowDown', 'arrowDown', 'arrowDown']
             newSortState[key] = 'arrowDown'
         }
         this.setState({
@@ -44,8 +43,6 @@ class Table extends Component {
                         response.json().then((data) =>
                             this.setState({
                                 currentData: data,
-                                data: data,
-                                isLoad: true
                             }))
 
                     }
@@ -81,7 +78,8 @@ class Table extends Component {
 
         }
         else this.setState({
-            currentData: this.state.data
+            currentData: this.state.data,
+            data:[]
         })
     }
 
@@ -96,7 +94,6 @@ class Table extends Component {
     }
 
     render() {//Клиентская пагинация
-        console.log(this.state.currentData)
         const elPerPage = 50,
             indexOfLast = this.state.currentPage * elPerPage,
             indexOfFirst = indexOfLast - elPerPage,
@@ -147,7 +144,7 @@ class FilterTable extends Component {
 
     render() {
         return <div className='Search'>
-            <input placeholder='Найти(название поля:значение поля)' onChange={this.handlerClick} className='itemSize' type="text"/>
+            <input placeholder='Найти(название поля:значение поля,...)' onChange={this.handlerClick} className='itemSize' type="text"/>
             <input type="submit" onClick={() => this.props.filter(this.state.textSearching)} value='Найти'/>
         </div>
     }
