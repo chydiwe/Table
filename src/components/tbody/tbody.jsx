@@ -1,5 +1,6 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import './tbody.css'
+
 export class Tbody extends Component {
 
     render() {

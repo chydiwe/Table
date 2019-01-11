@@ -6,15 +6,17 @@ import {FilterTable} from "../../components/filterForTable/filter";
 import {Info} from "../../components/info-block/info-block";
 import {Pagination} from "../../components/ClientPagination/pagintation";
 
+const initSortStatus = ['arrowDown', 'arrowDown', 'arrowDown', 'arrowDown', 'arrowDown']
+
 class Table extends Component {
     constructor(props) {
         super(props);
         this.state = {
             currentData: [],
-            sortStatus: ['arrowDown', 'arrowDown', 'arrowDown', 'arrowDown', 'arrowDown'],
+            sortStatus:initSortStatus,
             info: null,
             currentPage: 1,
-            elPerPage: 50
+            elPerPage: 50,
         }
         this.sortTable = this.sortTable.bind(this)
         this.showInfo = this.showInfo.bind(this)
@@ -29,7 +31,7 @@ class Table extends Component {
                 if (a[item] > b[item])
                     return 1
             })
-            newSortState = ['arrowDown', 'arrowDown', 'arrowDown', 'arrowDown', 'arrowDown']
+            newSortState = initSortStatus
             newSortState[key] = 'arrowUp'
         }
         else {
@@ -44,7 +46,7 @@ class Table extends Component {
     }
 
     componentDidMount() {
-        fetch(`http://www.filltext.com/${this.props.location.search}&id={number|1000}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
+        fetch(`http://www.filltext.com/${this.props.location.search}&id={number|10}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`)
             .then(response => {
                     if (response.status === 200) {
                         response.json().then((data) =>
@@ -60,34 +62,30 @@ class Table extends Component {
     }
 
     filter(str) {
-        if (str !== null) {
-            this.setState({
-                currentPage: 1,
-                info: null
-            })
+        this.setState({currentPage: 1, info: null,sortStatus:initSortStatus})
+        if (str) {
             let arr = str.split(','), data;
             this.state.data ? data = this.state.data : data = this.state.currentData
-            arr = arr.map((item) => item.split(':'));
-            arr = data.filter(obj => {
+            arr = data.filter(objT => {
                 for (let i = 0; i < arr.length; i++) {
-                    if (arr[i].length === 2) {
-                        if (obj[arr[i][0]] !== undefined && obj[arr[i][0]].toString() === arr[i][1])
-                            return true;
-                    }
-
+                    if (Object.values(objT).toString().search(arr[i]) !== -1)
+                        return true
                 }
+                return false
             })
             if (arr.length !== 0) this.setState({
                 currentData: arr,
                 data: data
             })
             else alert('Не найдено')
-
         }
-        else this.setState({
-            currentData: this.state.data,
-            data: []
-        })
+        else {
+            if (this.state.data) this.setState({
+                currentData: this.state.data,
+                data: null
+            })
+        }
+
     }
 
     showInfo(key) {
@@ -101,7 +99,7 @@ class Table extends Component {
     }
 
     render() {
-        const {currentPage, currentData, sortStatus, elPerPage} = this.state
+        const {currentPage, currentData, sortStatus, elPerPage, filterArr} = this.state
         return (
             <div className="App">
                 {this.state.currentData.length ? <div className='Table'>

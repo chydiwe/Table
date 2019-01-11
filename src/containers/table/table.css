@@ -10,7 +10,9 @@
     width: 60%;
     position: relative
 }
-
+.none{
+    display: none;
+}
 .tableTextBorder {
     text-align: center;
     border-collapse: collapse;
