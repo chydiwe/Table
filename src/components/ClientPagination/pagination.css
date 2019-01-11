@@ -1,0 +1,16 @@
+
+.Pages {
+    display: flex;
+}
+
+.pagination {
+    margin-right: 0.3em;
+    color: blue;
+    user-select: none;
+    cursor: pointer;
+    list-style: none;
+}
+.pageSelect{
+    color:red;
+    font-size: 20px;
+}

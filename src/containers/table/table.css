@@ -1,0 +1,68 @@
+
+#root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ height: auto;
+}
+
+.App {
+    width: 60%;
+    position: relative
+}
+
+.tableTextBorder {
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 5px;
+    background: #E1E3E0;
+    border-radius: 20px;
+    width: 90%;
+}
+
+
+.arrowDown {
+    border: 10px solid transparent;
+    border-top-color: yellowgreen;
+    border-bottom: 0;
+    width: 1px;
+    display: inline-block;
+
+}
+
+
+.arrowUp {
+    border: 10px solid transparent;
+    border-bottom-color: #cd536d;
+    border-top: 0;
+    width: 1px;
+    display: inline-block;
+}
+
+
+.StyleForTd>td {
+    padding: 10px;
+    color: #8D8173;
+}
+
+
+
+.loader {
+    margin:30% auto ;
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

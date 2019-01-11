@@ -1,0 +1,12 @@
+
+.StyleForTr {
+    border-bottom: 1px solid #818181;
+}
+
+.StyleForTr:last-child {
+    border-bottom: none
+}
+
+.StyleForTr>tr:hover {
+    background: #fdfffc;
+}

@@ -1,0 +1,8 @@
+.textAreaStyle {
+    width: 60%
+}
+
+.Info {
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,22 @@
+.Search {
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.InputStyleSubmit{
+    font-size: 16px;
+    height: 35px;
+    margin-left: 10px;
+    background: #c4092f;
+    border: none;
+    border-radius: 2px;
+    color: #FFF;
+}
+
+.inputStr{
+    width: 15vw;
+    height: 32px;
+}
