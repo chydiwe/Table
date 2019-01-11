@@ -104,7 +104,7 @@ class Table extends Component {
             <div className="App">
                 {this.state.currentData.length ? <div className='Table'>
                     <FilterTable filter={this.filter}/>
-                    <table className='tableTextBorder'>
+                    <table className='Table tableTextBorder'>
                         <Thead sort={this.sortTable} data={currentData[0]}
                                sortStatus={sortStatus}/>
                         <Tbody currentPage={currentPage} data={currentData} elPerPage={elPerPage}
